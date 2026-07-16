@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💌 Buat Kamu</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(#ffd6e8,#fff);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+overflow:hidden;
+}
+
+.card{
+background:white;
+width:90%;
+max-width:400px;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+text-align:center;
+animation:naik 1s;
+}
+
+@keyframes naik{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+img{
+width:220px;
+border-radius:20px;
+margin-bottom:15px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin:10px;
+}
+
+#iya{
+background:#ff5c93;
+color:white;
+}
+
+#engga{
+background:#ddd;
+position:relative;
+}
+
+h1{
+color:#ff5c93;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🥺 Jangan Ditutup Dulu...</h1>
+
+<img src="kucing.jpg">
+
+<p id="text"></p>
+
+<button id="iya">❤️ Aku Maafin</button>
+
+<button id="engga">😤 Enggak</button>
+
+</div>
+
+<script>
+
+const tulisan=[
+"Haiii senggg...",
+"",
+"Aku mau minta maaf banget ama kamu...",
+"",
+"Maaf kalau aku bikin kamu takut",
+"",
+"Maaf kalau aku bikin kamu ragu sama aku.",
+"",
+"Jujur...",
+"",
+"Aku bener bener ga mau ini udahan.",
+"",
+"Aku gak bisa ngubah apa yang udah terjadi...",
+"",
+"Tapi aku bakal buktiin kalau aku bisa jadi lebih baik.",
+"",
+"Aku cuma minta satu hal...",
+"",
+"Tolong jangan nyerah sama aku ya. 🥺❤️",
+"",
+"*walaupun baru 1 minggu deket"
+];
+
+let i=0;
+
+function ketik(){
+
+if(i<tulisan.length){
+
+document.getElementById("text").innerHTML+=tulisan[i]+"<br>";
+
+i++;
+
+setTimeout(ketik,900);
+
+}
+
+}
+
+ketik();
+
+const no=document.getElementById("engga");
+
+const kata=[
+"😤 Enggak",
+"Yakin? 🥺",
+"Jangan dong 😭",
+"Kasih kesempatan ❤️",
+"Eh jangan 😆"
+];
+
+function kabur(e){
+if(e)e.preventDefault();
+const maxX=window.innerWidth-no.offsetWidth-20;
+const maxY=window.innerHeight-no.offsetHeight-20;
+no.style.position="fixed";
+no.style.left=(Math.random()*Math.max(20,maxX))+"px";
+no.style.top=(Math.random()*Math.max(20,maxY))+"px";
+no.innerHTML=kata[Math.floor(Math.random()*kata.length)];
+}
+
+no.addEventListener("mouseover",kabur);
+no.addEventListener("touchstart",kabur,{passive:false});
+no.addEventListener("click",kabur);
+
+document.getElementById("iya").onclick=()=>{
+
+document.body.innerHTML=`
+
+<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:pink;flex-direction:column;font-family:Arial;text-align:center;">
+
+<h1 style="font-size:45px;color:white;">YAYYY 🥹❤️</h1>
+
+<h2>Makasih yaa...</h2>
+
+<p>Aku janji bakal buktiin lewat tindakan.<br>Bukan cuma kata-kata.</p>
+
+<img src="kucing2.jpg" width="250" style="border-radius:20px;">
+
+</div>
+
+`;
+
+}
+
+</script>
+
+</body>
+</html>
